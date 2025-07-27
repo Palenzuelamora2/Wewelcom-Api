@@ -1,6 +1,6 @@
 FROM php:8.2-apache
 
-# Instalación de dependencias
+# Instalación de dependencias del sistema
 RUN apt-get update && apt-get install -y \
     libpng-dev \
     libonig-dev \
@@ -27,6 +27,9 @@ WORKDIR /var/www
 
 # Copiar archivos del proyecto
 COPY . .
+
+# Asegura que el directorio 'vendor' se cree DENTRO de la imagen Docker
+RUN composer install --no-dev --optimize-autoloader --no-interaction
 
 # Permisos para Laravel
 RUN chown -R www-data:www-data /var/www \

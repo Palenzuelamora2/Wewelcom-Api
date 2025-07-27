@@ -23,7 +23,7 @@ use App\Http\Controllers\Controller;
  * )
  *
  * @OA\Server(
- *     url="https://tudominio.com/api/v1",
+ *     url="https://wewelcom-api-production.up.railway.app/api/v1",
  *     description="Servidor de Producción"
  * )
  *
