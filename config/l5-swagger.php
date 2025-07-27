@@ -6,7 +6,7 @@ return [
         'default' => [
             'api' => [
                 'info' => [
-                    'title' => 'API de [PalenzuelaMoraDaniel Wewelcom]',
+                    'title' => 'API de Daniel Palenzuela Mora Wewelcom',
                     'description' => 'Documentación de la API para Wewelcom',
                     'version' => '1.0.0',
                     'contact' => [
@@ -26,11 +26,12 @@ return [
                 /*
                  * Edit to include full URL in ui for assets
                  */
+                // Aseguramos que use rutas absolutas para los assets
                 'use_absolute_path' => env('L5_SWAGGER_USE_ABSOLUTE_PATH', true),
 
                 /*
-                * Edit to set path where swagger ui assets should be stored
-                */
+                 * Edit to set path where swagger ui assets should be stored
+                 */
                 'swagger_ui_assets_path' => env('L5_SWAGGER_UI_ASSETS_PATH', 'vendor/swagger-api/swagger-ui/dist/'),
 
                 /*
@@ -90,7 +91,7 @@ return [
             /*
              * Absolute path to location where parsed annotations will be stored
              */
-            'docs' => public_path(),
+            'docs' => public_path(), // Generar directamente en public
 
             /*
              * Absolute path to directory where to export views
@@ -119,14 +120,14 @@ return [
             'default_processors_configuration' => [
                 /** Example */
                 /**
-             * 'operationId.hash' => true,
-             * 'pathFilter' => [
-             * 'tags' => [
-             * '/pets/',
-             * '/store/',
-             * ],
-             * ],.
-             */
+                 * 'operationId.hash' => true,
+                 * 'pathFilter' => [
+                 * 'tags' => [
+                 * '/pets/',
+                 * '/store/',
+                 * ],
+                 * ],.
+                 */
             ],
 
             /**
@@ -154,7 +155,7 @@ return [
             ],
 
             /**
-             * pattern: string       $pattern File pattern(s) to scan (default: *.php) .
+             * pattern: string      $pattern File pattern(s) to scan (default: *.php) .
              *
              * @see \OpenApi\scan
              */
@@ -176,7 +177,7 @@ return [
 
         /*
          * API security definitions. Will be generated into documentation file.
-        */
+         */
         'securityDefinitions' => [
             'securitySchemes' => [
                 /*
@@ -255,7 +256,7 @@ return [
          * Edit to trust the proxy's ip address - needed for AWS Load Balancer
          * string[]
          */
-        'proxy' => false,
+        'proxy' => true, // CAMBIADO: De false a true para entornos proxy
 
         /*
          * Configs plugin allows to fetch external configs instead of passing them to SwaggerUIBundle.
@@ -319,7 +320,8 @@ return [
          * Constants which can be used in annotations
          */
         'constants' => [
-            'L5_SWAGGER_CONST_HOST' => env('APP_URL', 'http://localhost:8000') . '/api/v1',
+          
+            'L5_SWAGGER_CONST_HOST' => env('APP_URL', 'https://localhost'), 
         ],
     ],
 ];
