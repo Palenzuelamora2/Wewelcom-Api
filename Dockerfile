@@ -28,6 +28,9 @@ WORKDIR /var/www
 # Copiar archivos del proyecto
 COPY . .
 
+# Esto asegura que los directorios existan antes de intentar cambiar sus permisos.
+RUN mkdir -p /var/www/storage /var/www/bootstrap/cache
+
 # Asegura que los directorios 'storage' y 'bootstrap/cache' sean escribibles por Apache/PHP
 RUN chown -R www-data:www-data /var/www \
     && chmod -R 775 /var/www/storage /var/www/bootstrap/cache
