@@ -31,12 +31,9 @@ COPY . .
 # Crear directorios de cache y storage si no existen
 RUN mkdir -p /var/www/storage /var/www/bootstrap/cache
 
-#  Crear directorio para la documentación de Swagger 
-RUN mkdir -p /var/www/public/docs
-
-# Permisos para Laravel y la documentación de Swagger
+# Permisos para Laravel (solo storage y bootstrap/cache)
 RUN chown -R www-data:www-data /var/www \
-    && chmod -R 775 /var/www/storage /var/www/bootstrap/cache /var/www/public/docs
+    && chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
 # Instalar dependencias de Composer
 RUN composer install --no-dev --optimize-autoloader --no-interaction
