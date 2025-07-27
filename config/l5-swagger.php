@@ -259,7 +259,7 @@ return [
          * Edit to trust the proxy's ip address - needed for AWS Load Balancer
          * string[]
          */
-        'proxy' => true, // MANTENEMOS TRUE
+        'proxy' => true, 
 
         /*
          * Configs plugin allows to fetch external configs instead of passing them to SwaggerUIBundle.
@@ -284,7 +284,7 @@ return [
          * Swagger UI configuration parameters
          */
         'ui' => [
-            // ¡¡¡IMPORTANTE!!! La URL apunta a la nueva ruta de Laravel que servirá el JSON
+            // La URL apunta a la nueva ruta de Laravel que servirá el JSON
             'url' => env('APP_URL') . '/api/api-docs-json', 
             'display' => [
                 'dark_mode' => env('L5_SWAGGER_UI_DARK_MODE', false),
