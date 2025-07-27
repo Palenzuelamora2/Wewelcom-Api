@@ -91,8 +91,7 @@ return [
             /*
              * Absolute path to location where parsed annotations will be stored
              *
-             * 
-             */
+             * */
             'docs' => public_path('docs'),
 
             /*
@@ -102,8 +101,7 @@ return [
 
             /*
              * Edit to set the api's base path
-             * 
-             */
+             * */
             'base' => env('APP_URL') . '/api/v1', // Usamos APP_URL para asegurar HTTPS y añadimos /api/v1
 
             /*
@@ -284,6 +282,8 @@ return [
          * Swagger UI configuration parameters
          */
         'ui' => [
+            // *** NUEVO: Definimos explícitamente la URL del archivo JSON ***
+            'url' => env('APP_URL') . '/' . config('l5-swagger.defaults.routes.docs') . '/' . config('l5-swagger.documentations.default.paths.docs_json'),
             'display' => [
                 'dark_mode' => env('L5_SWAGGER_UI_DARK_MODE', false),
                 /*

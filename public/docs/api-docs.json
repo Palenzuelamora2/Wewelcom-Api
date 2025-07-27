@@ -16,6 +16,9 @@
         {
             "url": "https://wewelcom-api-production.up.railway.app/api/v1",
             "description": "Servidor de Producción"
+        },
+        {
+            "url": "https://wewelcom-api-production.up.railway.app/api/v1"
         }
     ],
     "paths": {
