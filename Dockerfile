@@ -29,14 +29,12 @@ WORKDIR /var/www
 COPY . .
 
 # Crear directorios de cache y storage si no existen
-RUN mkdir -p /var/www/storage /var/www/bootstrap/cache
+# Aseguramos que storage/api-docs tenga permisos de escritura
+RUN mkdir -p /var/www/storage /var/www/bootstrap/cache /var/www/storage/api-docs
 
-#  Crear directorio para la documentación de Swagger 
-RUN mkdir -p /var/www/public/docs
-
-# Permisos para Laravel y la documentación de Swagger
+# Permisos para Laravel (storage y bootstrap/cache, y storage/api-docs)
 RUN chown -R www-data:www-data /var/www \
-    && chmod -R 775 /var/www/storage /var/www/bootstrap/cache /var/www/public/docs
+    && chmod -R 775 /var/www/storage /var/www/bootstrap/cache /var/www/storage/api-docs
 
 # Instalar dependencias de Composer
 RUN composer install --no-dev --optimize-autoloader --no-interaction

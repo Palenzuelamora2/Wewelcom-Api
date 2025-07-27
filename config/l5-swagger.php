@@ -62,8 +62,9 @@ return [
         'routes' => [
             /*
              * Route for accessing parsed swagger annotations.
+             * 
              */
-            'docs' => 'docs', // Esta ruta es para acceder al JSON de la documentación
+            'docs' => 'api-docs-json', // Nueva ruta para servir el JSON
             'api' => 'api/documentation',
 
             /*
@@ -91,8 +92,9 @@ return [
             /*
              * Absolute path to location where parsed annotations will be stored
              *
-             * */
-            'docs' => public_path('docs'),
+             * 
+             */
+            'docs' => storage_path('api-docs'),
 
             /*
              * Absolute path to directory where to export views
@@ -282,8 +284,8 @@ return [
          * Swagger UI configuration parameters
          */
         'ui' => [
-            // *** CAMBIADO: Definimos explícitamente la URL del archivo JSON de forma más directa ***
-            'url' => env('APP_URL') . '/docs/api-docs.json',
+            // ¡¡¡IMPORTANTE!!! La URL apunta a la nueva ruta de Laravel que servirá el JSON
+            'url' => env('APP_URL') . '/api/api-docs-json', 
             'display' => [
                 'dark_mode' => env('L5_SWAGGER_UI_DARK_MODE', false),
                 /*
