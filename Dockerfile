@@ -28,15 +28,17 @@ WORKDIR /var/www
 # Copiar archivos del proyecto
 COPY . .
 
-# Esto asegura que los directorios existan antes de intentar cambiar sus permisos.
+# Crear directorios de cache y storage si no existen
 RUN mkdir -p /var/www/storage /var/www/bootstrap/cache
 
-# Asegura que los directorios 'storage' y 'bootstrap/cache' sean escribibles por Apache/PHP
+#  Crear directorio para la documentación de Swagger 
+RUN mkdir -p /var/www/public/docs
+
+# Permisos para Laravel y la documentación de Swagger
 RUN chown -R www-data:www-data /var/www \
-    && chmod -R 775 /var/www/storage /var/www/bootstrap/cache
+    && chmod -R 775 /var/www/storage /var/www/bootstrap/cache /var/www/public/docs
 
 # Instalar dependencias de Composer
-# Asegura que el directorio 'vendor' se cree DENTRO de la imagen Docker
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
 EXPOSE 80
