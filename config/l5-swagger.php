@@ -282,8 +282,8 @@ return [
          * Swagger UI configuration parameters
          */
         'ui' => [
-            // *** NUEVO: Definimos explícitamente la URL del archivo JSON ***
-            'url' => env('APP_URL') . '/' . config('l5-swagger.defaults.routes.docs') . '/' . config('l5-swagger.documentations.default.paths.docs_json'),
+            // *** CAMBIADO: Definimos explícitamente la URL del archivo JSON de forma más directa ***
+            'url' => env('APP_URL') . '/docs/api-docs.json',
             'display' => [
                 'dark_mode' => env('L5_SWAGGER_UI_DARK_MODE', false),
                 /*
