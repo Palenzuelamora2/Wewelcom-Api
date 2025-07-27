@@ -62,9 +62,8 @@ return [
         'routes' => [
             /*
              * Route for accessing parsed swagger annotations.
-             * ¡¡¡IMPORTANTE!!! CAMBIADO A 'api-docs.json' para que la ruta sea directa al archivo
              */
-            'docs' => 'api-docs.json', 
+            'docs' => 'docs', // Esta ruta es para acceder al JSON de la documentación
             'api' => 'api/documentation',
 
             /*
@@ -92,9 +91,8 @@ return [
             /*
              * Absolute path to location where parsed annotations will be stored
              *
-             * ¡¡¡IMPORTANTE!!! CAMBIADO A public_path() para generar directamente en 'public'
-             */
-            'docs' => public_path(),
+             * */
+            'docs' => public_path('docs'),
 
             /*
              * Absolute path to directory where to export views
@@ -285,8 +283,7 @@ return [
          */
         'ui' => [
             // *** CAMBIADO: Definimos explícitamente la URL del archivo JSON de forma más directa ***
-            // Usamos la URL completa del archivo JSON de Swagger.
-            'url' => env('APP_URL') . '/api-docs.json', // Directamente en la raíz de public
+            'url' => env('APP_URL') . '/docs/api-docs.json',
             'display' => [
                 'dark_mode' => env('L5_SWAGGER_UI_DARK_MODE', false),
                 /*
