@@ -6,7 +6,7 @@ return [
         'default' => [
             'api' => [
                 'info' => [
-                    'title' => 'API de Daniel Palenzuela Mora Wewelcom',
+                    'title' => 'API de [PalenzuelaMoraDaniel Wewelcom]',
                     'description' => 'Documentación de la API para Wewelcom',
                     'version' => '1.0.0',
                     'contact' => [
@@ -63,7 +63,7 @@ return [
             /*
              * Route for accessing parsed swagger annotations.
              */
-            'docs' => 'docs',
+            'docs' => 'docs', // Esta ruta es para acceder al JSON de la documentación
             'api' => 'api/documentation',
 
             /*
@@ -90,8 +90,10 @@ return [
         'paths' => [
             /*
              * Absolute path to location where parsed annotations will be stored
+             *
+             * 
              */
-            'docs' => public_path(), // Generar directamente en public
+            'docs' => public_path('docs'),
 
             /*
              * Absolute path to directory where to export views
@@ -100,8 +102,9 @@ return [
 
             /*
              * Edit to set the api's base path
+             * 
              */
-            'base' => env('L5_SWAGGER_BASE_PATH', null),
+            'base' => env('APP_URL') . '/api/v1', // Usamos APP_URL para asegurar HTTPS y añadimos /api/v1
 
             /*
              * Absolute path to directories that should be excluded from scanning
@@ -256,7 +259,7 @@ return [
          * Edit to trust the proxy's ip address - needed for AWS Load Balancer
          * string[]
          */
-        'proxy' => true, // CAMBIADO: De false a true para entornos proxy
+        'proxy' => true, // MANTENEMOS TRUE
 
         /*
          * Configs plugin allows to fetch external configs instead of passing them to SwaggerUIBundle.
@@ -320,8 +323,8 @@ return [
          * Constants which can be used in annotations
          */
         'constants' => [
-          
-            'L5_SWAGGER_CONST_HOST' => env('APP_URL', 'https://localhost'), 
+            
+            'L5_SWAGGER_CONST_HOST' => env('APP_URL'), 
         ],
     ],
 ];
