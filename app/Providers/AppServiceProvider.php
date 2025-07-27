@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL; // Importar la fachada URL
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +20,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // FORZAR HTTPS para todas las URLs generadas por Laravel
+        // Esto es crucial cuando la aplicación está detrás de un proxy SSL/TLS (como Railway)
+        if (env('APP_ENV') === 'production') { // Aplicar solo en producción
+            URL::forceScheme('https');
+        }
     }
 }
