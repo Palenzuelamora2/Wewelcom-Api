@@ -28,11 +28,12 @@ WORKDIR /var/www
 # Copiar archivos del proyecto
 COPY . .
 
+# Asegura que los directorios 'storage' y 'bootstrap/cache' sean escribibles por Apache/PHP
+RUN chown -R www-data:www-data /var/www \
+    && chmod -R 775 /var/www/storage /var/www/bootstrap/cache
+
+# Instalar dependencias de Composer
 # Asegura que el directorio 'vendor' se cree DENTRO de la imagen Docker
 RUN composer install --no-dev --optimize-autoloader --no-interaction
-
-# Permisos para Laravel
-RUN chown -R www-data:www-data /var/www \
-    && chmod -R 755 /var/www
 
 EXPOSE 80
