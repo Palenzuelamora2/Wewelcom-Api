@@ -15,8 +15,7 @@ class VerificarApiKey
 
         if (!$apiKeyHeader || $apiKeyHeader !== $apiKeyConfig) {
             return response()->json(['mensaje' => 'API Key inválida'], 401);
-        }
-
+        }   
         return $next($request);
     }
 }
