@@ -15,7 +15,7 @@ return [
     */
     
     //Añadimos esta linea para poder llamarla en el VerificarApiKey.php
-    'api_key' => env('API_KEY_FRONTEND'),
+    'api_key' => env('API_KEY'),
 
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
