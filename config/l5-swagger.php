@@ -286,6 +286,7 @@ return [
         'ui' => [
             // La URL apunta a la nueva ruta de Laravel que servirá el JSON
             'url' => env('APP_URL') . '/api/api-docs-json', 
+            'title' => 'Documentación API',
             'display' => [
                 'dark_mode' => env('L5_SWAGGER_UI_DARK_MODE', false),
                 /*
