@@ -6,7 +6,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['https://wewelcom.vercel.app'], 
+    'allowed_origins' => ['https://wewelcom.vercel.app', 'https://wewelcom-palenzuelamoradaniels-projects.vercel.app'],
 
     'allowed_origins_patterns' => [],
 
@@ -15,7 +15,5 @@ return [
     'exposed_headers' => [],
 
     'max_age' => 0,
-
-    'supports_credentials' => false,
 
 ];
